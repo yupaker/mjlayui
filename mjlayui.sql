@@ -1,25 +1,26 @@
 /*
-Navicat MySQL Data Transfer
+SQLyog  v12.2.6 (64 bit)
+MySQL - 5.5.47 : Database - mjlayui
+*********************************************************************
+*/
 
-Source Server         : localhost_3306
-Source Server Version : 50553
-Source Host           : localhost:3306
-Source Database       : tplay
+/*!40101 SET NAMES utf8 */;
 
-Target Server Type    : MYSQL
-Target Server Version : 50553
-File Encoding         : 65001
+/*!40101 SET SQL_MODE=''*/;
 
-Date: 2018-02-06 14:06:11
-*/
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`mjlayui` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-SET FOREIGN_KEY_CHECKS=0;
+USE `mjlayui`;
 
--- ----------------------------
--- Table structure for `tplay_admin`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_admin`;
-CREATE TABLE `tplay_admin` (
+/*Table structure for table `mjlayui_admin` */
+
+DROP TABLE IF EXISTS `mjlayui_admin`;
+
+CREATE TABLE `mjlayui_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nickname` varchar(20) DEFAULT NULL COMMENT '昵称',
   `name` varchar(100) NOT NULL,
@@ -35,18 +36,19 @@ CREATE TABLE `tplay_admin` (
   KEY `admin_cate_id` (`admin_cate_id`) USING BTREE,
   KEY `nickname` (`nickname`) USING BTREE,
   KEY `create_time` (`create_time`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_admin
--- ----------------------------
-INSERT INTO `tplay_admin` VALUES ('1', 'Tplay', 'admin', '31c64b511d1e90fcda8519941c1bd660', '1', '1510885948', '1517622948', '1517887954', '127.0.0.1', '1');
+/*Data for the table `mjlayui_admin` */
 
--- ----------------------------
--- Table structure for `tplay_admin_cate`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_admin_cate`;
-CREATE TABLE `tplay_admin_cate` (
+insert  into `mjlayui_admin`(`id`,`nickname`,`name`,`password`,`thumb`,`create_time`,`update_time`,`login_time`,`login_ip`,`admin_cate_id`) values 
+(1,'鱼paker','admin','31c64b511d1e90fcda8519941c1bd660',2,1510885948,1519892112,1519885160,'0.0.0.0',1),
+(16,'小奥','ceshi','9eb2b9ad495a75f80f9cf67ed08bbaae',4,1519892244,1519892244,1519892397,'0.0.0.0',20);
+
+/*Table structure for table `mjlayui_admin_cate` */
+
+DROP TABLE IF EXISTS `mjlayui_admin_cate`;
+
+CREATE TABLE `mjlayui_admin_cate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `permissions` text COMMENT '权限菜单',
@@ -57,18 +59,19 @@ CREATE TABLE `tplay_admin_cate` (
   KEY `id` (`id`) USING BTREE,
   KEY `name` (`name`) USING BTREE,
   KEY `create_time` (`create_time`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_admin_cate
--- ----------------------------
-INSERT INTO `tplay_admin_cate` VALUES ('1', '超级管理员', '4,5,6,7,8,11,13,14,16,17,19,20,21,25,26,28,29,34,35,37,38,39,40,42,43,44,45,47,48', '0', '1517022009', '超级管理员，拥有最高权限！');
+/*Data for the table `mjlayui_admin_cate` */
 
--- ----------------------------
--- Table structure for `tplay_admin_log`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_admin_log`;
-CREATE TABLE `tplay_admin_log` (
+insert  into `mjlayui_admin_cate`(`id`,`name`,`permissions`,`create_time`,`update_time`,`desc`) values 
+(1,'超级管理员','4,5,6,7,8,11,13,14,16,17,19,20,21,25,26,28,29,34,35,37,38,39,40,42,43,44,45,47,48',0,1517022009,'超级管理员，拥有最高权限！'),
+(20,'网站编辑','7,8,34,35,37,38,39,40,42,43,44,45,47,48',1519892162,1519892294,'');
+
+/*Table structure for table `mjlayui_admin_log` */
+
+DROP TABLE IF EXISTS `mjlayui_admin_log`;
+
+CREATE TABLE `mjlayui_admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `admin_menu_id` int(11) NOT NULL COMMENT '操作菜单id',
   `admin_id` int(11) NOT NULL COMMENT '操作者id',
@@ -79,17 +82,34 @@ CREATE TABLE `tplay_admin_log` (
   KEY `id` (`id`) USING BTREE,
   KEY `admin_id` (`admin_id`) USING BTREE,
   KEY `create_time` (`create_time`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_admin_log
--- ----------------------------
+/*Data for the table `mjlayui_admin_log` */
 
--- ----------------------------
--- Table structure for `tplay_admin_menu`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_admin_menu`;
-CREATE TABLE `tplay_admin_menu` (
+insert  into `mjlayui_admin_log`(`id`,`admin_menu_id`,`admin_id`,`ip`,`operation_id`,`create_time`) values 
+(1,50,1,'0.0.0.0','',1519885160),
+(2,49,1,'0.0.0.0','2',1519885444),
+(3,7,1,'0.0.0.0','1',1519885445),
+(4,4,1,'0.0.0.0','52',1519886048),
+(5,4,1,'0.0.0.0','53',1519886175),
+(6,4,1,'0.0.0.0','52',1519886206),
+(7,4,1,'0.0.0.0','52',1519886208),
+(8,4,1,'0.0.0.0','52',1519886209),
+(9,4,1,'0.0.0.0','53',1519886223),
+(10,25,1,'0.0.0.0','1',1519892112),
+(11,28,1,'0.0.0.0','20',1519892162),
+(12,49,1,'0.0.0.0','3',1519892217),
+(13,49,1,'0.0.0.0','4',1519892233),
+(14,25,1,'0.0.0.0','16',1519892244),
+(15,28,1,'0.0.0.0','20',1519892294),
+(16,50,16,'0.0.0.0','',1519892308),
+(17,50,16,'0.0.0.0','',1519892397);
+
+/*Table structure for table `mjlayui_admin_menu` */
+
+DROP TABLE IF EXISTS `mjlayui_admin_menu`;
+
+CREATE TABLE `mjlayui_admin_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `module` varchar(50) NOT NULL COMMENT '模块',
@@ -112,68 +132,70 @@ CREATE TABLE `tplay_admin_menu` (
   KEY `function` (`function`) USING BTREE,
   KEY `is_display` (`is_display`) USING BTREE,
   KEY `type` (`type`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COMMENT='系统菜单表';
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COMMENT='系统菜单表';
 
--- ----------------------------
--- Records of tplay_admin_menu
--- ----------------------------
-INSERT INTO `tplay_admin_menu` VALUES ('1', '系统', '', '', '', '', '系统设置。', '1', '2', '0', '0', '1517015748', 'fa-cog', '1', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('2', '菜单', '', '', '', '', '菜单管理。', '1', '2', '1', '0', '1517015764', 'fa-paw', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('51', '系统菜单排序', 'admin', 'menu', 'orders', '', '系统菜单排序。', '2', '1', '3', '1517562047', '1517562047', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('3', '系统菜单', 'admin', 'menu', 'index', null, '系统菜单管理', '1', '2', '2', '0', '0', 'fa-share-alt', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('4', '新增/修改系统菜单', 'admin', 'menu', 'publish', '', '新增/修改系统菜单.', '2', '1', '3', '1516948769', '1516948769', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('5', '删除系统菜单', 'admin', 'menu', 'delete', '', '删除系统菜单。', '2', '1', '3', '1516948857', '1516948857', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('6', '个人', '', '', '', '', '个人信息管理。', '1', '1', '1', '1516949308', '1517021986', 'fa-user', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('7', '个人信息', 'admin', 'admin', 'personal', '', '个人信息修改。', '1', '1', '6', '1516949435', '1516949435', 'fa-user', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('8', '修改密码', 'admin', 'admin', 'editpassword', '', '管理员修改个人密码。', '1', '1', '6', '1516949702', '1517619887', 'fa-unlock-alt', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('9', '设置', '', '', '', '', '系统相关设置。', '1', '2', '1', '1516949853', '1517015878', 'fa-cog', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('10', '网站设置', 'admin', 'webconfig', 'index', '', '网站相关设置首页。', '1', '2', '9', '1516949994', '1516949994', 'fa-bullseye', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('11', '修改网站设置', 'admin', 'webconfig', 'publish', '', '修改网站设置。', '2', '1', '10', '1516950047', '1516950047', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('12', '邮件设置', 'admin', 'emailconfig', 'index', '', '邮件配置首页。', '1', '2', '9', '1516950129', '1516950129', 'fa-envelope', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('13', '修改邮件设置', 'admin', 'emailconfig', 'publish', '', '修改邮件设置。', '2', '1', '12', '1516950215', '1516950215', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('14', '发送测试邮件', 'admin', 'emailconfig', 'mailto', '', '发送测试邮件。', '2', '1', '12', '1516950295', '1516950295', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('15', '短信设置', 'admin', 'smsconfig', 'index', '', '短信设置首页。', '1', '2', '9', '1516950394', '1516950394', 'fa-comments', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('16', '修改短信设置', 'admin', 'smsconfig', 'publish', '', '修改短信设置。', '2', '1', '15', '1516950447', '1516950447', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('17', '发送测试短信', 'admin', 'smsconfig', 'smsto', '', '发送测试短信。', '2', '1', '15', '1516950483', '1516950483', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('18', 'URL 设置', 'admin', 'urlsconfig', 'index', '', 'url 设置。', '1', '2', '9', '1516950738', '1516950804', 'fa-code-fork', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('19', '新增/修改url设置', 'admin', 'urlsconfig', 'publish', '', '新增/修改url设置。', '2', '1', '18', '1516950850', '1516950850', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('20', '启用/禁用url美化', 'admin', 'urlsconfig', 'status', '', '启用/禁用url美化。', '2', '1', '18', '1516950909', '1516950909', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('21', ' 删除url美化规则', 'admin', 'urlsconfig', 'delete', '', ' 删除url美化规则。', '2', '1', '18', '1516950941', '1516950941', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('22', '会员', '', '', '', '', '会员管理。', '1', '2', '0', '1516950991', '1517015810', 'fa-users', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('23', '管理员', '', '', '', '', '系统管理员管理。', '1', '2', '22', '1516951071', '1517015819', 'fa-user', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('24', '管理员', 'admin', 'admin', 'index', '', '系统管理员列表。', '1', '2', '23', '1516951163', '1516951163', 'fa-user', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('25', '新增/修改管理员', 'admin', 'admin', 'publish', '', '新增/修改系统管理员。', '2', '1', '24', '1516951224', '1516951224', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('26', '删除管理员', 'admin', 'admin', 'delete', '', '删除管理员。', '2', '1', '24', '1516951253', '1516951253', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('27', '权限组', 'admin', 'admin', 'admincate', '', '权限分组。', '1', '2', '23', '1516951353', '1517018168', 'fa-dot-circle-o', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('28', '新增/修改权限组', 'admin', 'admin', 'admincatepublish', '', '新增/修改权限组。', '2', '1', '27', '1516951483', '1516951483', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('29', '删除权限组', 'admin', 'admin', 'admincatedelete', '', '删除权限组。', '2', '1', '27', '1516951515', '1516951515', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('30', '操作日志', 'admin', 'admin', 'log', '', '系统管理员操作日志。', '1', '2', '23', '1516951754', '1517018196', 'fa-pencil', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('31', '内容', '', '', '', '', '内容管理。', '1', '2', '0', '1516952262', '1517015835', 'fa-th-large', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('32', '文章', '', '', '', '', '文章相关管理。', '1', '2', '31', '1516952698', '1517015846', 'fa-bookmark', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('33', '分类', 'admin', 'articlecate', 'index', '', '文章分类管理。', '1', '2', '32', '1516952856', '1516952856', 'fa-tag', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('34', '新增/修改文章分类', 'admin', 'articlecate', 'publish', '', '新增/修改文章分类。', '2', '1', '33', '1516952896', '1516952896', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('35', '删除文章分类', 'admin', 'articlecate', 'delete', '', '删除文章分类。', '2', '1', '33', '1516952942', '1516952942', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('36', '文章', 'admin', 'article', 'index', '', '文章管理。', '1', '2', '32', '1516953011', '1516953028', 'fa-bookmark', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('37', '新增/修改文章', 'admin', 'article', 'publish', '', '新增/修改文章。', '2', '1', '36', '1516953056', '1516953056', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('38', '审核/拒绝文章', 'admin', 'article', 'status', '', '审核/拒绝文章。', '2', '1', '36', '1516953113', '1516953113', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('39', '置顶/取消置顶文章', 'admin', 'article', 'is_top', '', '置顶/取消置顶文章。', '2', '1', '36', '1516953162', '1516953162', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('40', '删除文章', 'admin', 'article', 'delete', '', '删除文章。', '2', '1', '36', '1516953183', '1516953183', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('41', '附件', 'admin', 'attachment', 'index', '', '附件管理。', '1', '2', '31', '1516953306', '1516953306', 'fa-cube', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('42', '附件审核', 'admin', 'attachment', 'audit', '', '附件审核。', '2', '1', '41', '1516953359', '1516953440', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('43', '附件上传', 'admin', 'attachment', 'upload', '', '附件上传。', '2', '1', '41', '1516953392', '1516953392', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('44', '附件下载', 'admin', 'attachment', 'download', '', '附件下载。', '2', '1', '41', '1516953430', '1516953430', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('45', '附件删除', 'admin', 'attachment', 'delete', '', '附件删除。', '2', '1', '41', '1516953477', '1516953477', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('46', '留言', 'admin', 'tomessages', 'index', '', '留言管理。', '1', '2', '31', '1516953526', '1516953526', 'fa-comments', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('47', '留言处理', 'admin', 'tomessages', 'mark', '', '留言处理。', '2', '1', '46', '1516953605', '1516953605', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('48', '留言删除', 'admin', 'tomessages', 'delete', '', '留言删除。', '2', '1', '46', '1516953648', '1516953648', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('49', '图片上传', 'admin', 'common', 'upload', '', '图片上传。', '2', '2', '0', '1516954491', '1516954491', '', '0', '0');
-INSERT INTO `tplay_admin_menu` VALUES ('50', '管理员登录', 'admin', 'common', 'login', '', '管理员登录。', '2', '2', '0', '1516954517', '1516954517', '', '0', '0');
+/*Data for the table `mjlayui_admin_menu` */
 
--- ----------------------------
--- Table structure for `tplay_article`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_article`;
-CREATE TABLE `tplay_article` (
+insert  into `mjlayui_admin_menu`(`id`,`name`,`module`,`controller`,`function`,`parameter`,`description`,`is_display`,`type`,`pid`,`create_time`,`update_time`,`icon`,`is_open`,`orders`) values 
+(1,'系统','','','','','系统设置。',1,2,0,0,1517015748,'fa-cog',1,0),
+(2,'菜单','','','','','菜单管理。',1,2,1,0,1517015764,'fa-paw',0,0),
+(51,'系统菜单排序','admin','menu','orders','','系统菜单排序。',2,1,3,1517562047,1517562047,'',0,0),
+(3,'系统菜单','admin','menu','index',NULL,'系统菜单管理',1,2,2,0,0,'fa-share-alt',0,0),
+(4,'新增/修改系统菜单','admin','menu','publish','','新增/修改系统菜单.',2,1,3,1516948769,1516948769,'',0,0),
+(5,'删除系统菜单','admin','menu','delete','','删除系统菜单。',2,1,3,1516948857,1516948857,'',0,0),
+(6,'个人','','','','','个人信息管理。',1,1,1,1516949308,1517021986,'fa-user',0,0),
+(7,'个人信息','admin','admin','personal','','个人信息修改。',1,1,6,1516949435,1516949435,'fa-user',0,0),
+(8,'修改密码','admin','admin','editpassword','','管理员修改个人密码。',1,1,6,1516949702,1517619887,'fa-unlock-alt',0,0),
+(9,'设置','','','','','系统相关设置。',1,2,1,1516949853,1517015878,'fa-cog',0,0),
+(10,'网站设置','admin','webconfig','index','','网站相关设置首页。',1,2,9,1516949994,1516949994,'fa-bullseye',0,0),
+(11,'修改网站设置','admin','webconfig','publish','','修改网站设置。',2,1,10,1516950047,1516950047,'',0,0),
+(12,'邮件设置','admin','emailconfig','index','','邮件配置首页。',1,2,9,1516950129,1516950129,'fa-envelope',0,0),
+(13,'修改邮件设置','admin','emailconfig','publish','','修改邮件设置。',2,1,12,1516950215,1516950215,'',0,0),
+(14,'发送测试邮件','admin','emailconfig','mailto','','发送测试邮件。',2,1,12,1516950295,1516950295,'',0,0),
+(15,'短信设置','admin','smsconfig','index','','短信设置首页。',1,2,9,1516950394,1516950394,'fa-comments',0,0),
+(16,'修改短信设置','admin','smsconfig','publish','','修改短信设置。',2,1,15,1516950447,1516950447,'',0,0),
+(17,'发送测试短信','admin','smsconfig','smsto','','发送测试短信。',2,1,15,1516950483,1516950483,'',0,0),
+(18,'URL 设置','admin','urlsconfig','index','','url 设置。',1,2,9,1516950738,1516950804,'fa-code-fork',0,0),
+(19,'新增/修改url设置','admin','urlsconfig','publish','','新增/修改url设置。',2,1,18,1516950850,1516950850,'',0,0),
+(20,'启用/禁用url美化','admin','urlsconfig','status','','启用/禁用url美化。',2,1,18,1516950909,1516950909,'',0,0),
+(21,' 删除url美化规则','admin','urlsconfig','delete','',' 删除url美化规则。',2,1,18,1516950941,1516950941,'',0,0),
+(22,'会员','','','','','会员管理。',1,2,0,1516950991,1517015810,'fa-users',0,0),
+(23,'管理员','','','','','系统管理员管理。',1,2,22,1516951071,1517015819,'fa-user',0,0),
+(24,'管理员','admin','admin','index','','系统管理员列表。',1,2,23,1516951163,1516951163,'fa-user',0,0),
+(25,'新增/修改管理员','admin','admin','publish','','新增/修改系统管理员。',2,1,24,1516951224,1516951224,'',0,0),
+(26,'删除管理员','admin','admin','delete','','删除管理员。',2,1,24,1516951253,1516951253,'',0,0),
+(27,'权限组','admin','admin','admincate','','权限分组。',1,2,23,1516951353,1517018168,'fa-dot-circle-o',0,0),
+(28,'新增/修改权限组','admin','admin','admincatepublish','','新增/修改权限组。',2,1,27,1516951483,1516951483,'',0,0),
+(29,'删除权限组','admin','admin','admincatedelete','','删除权限组。',2,1,27,1516951515,1516951515,'',0,0),
+(30,'操作日志','admin','admin','log','','系统管理员操作日志。',1,2,23,1516951754,1517018196,'fa-pencil',0,0),
+(31,'内容','','','','','内容管理。',1,2,0,1516952262,1517015835,'fa-th-large',0,0),
+(32,'文章','','','','','文章相关管理。',1,2,31,1516952698,1517015846,'fa-bookmark',0,0),
+(33,'分类','admin','articlecate','index','','文章分类管理。',1,2,32,1516952856,1516952856,'fa-tag',0,0),
+(34,'新增/修改文章分类','admin','articlecate','publish','','新增/修改文章分类。',2,1,33,1516952896,1516952896,'',0,0),
+(35,'删除文章分类','admin','articlecate','delete','','删除文章分类。',2,1,33,1516952942,1516952942,'',0,0),
+(36,'文章','admin','article','index','','文章管理。',1,2,32,1516953011,1516953028,'fa-bookmark',0,0),
+(37,'新增/修改文章','admin','article','publish','','新增/修改文章。',2,1,36,1516953056,1516953056,'',0,0),
+(38,'审核/拒绝文章','admin','article','status','','审核/拒绝文章。',2,1,36,1516953113,1516953113,'',0,0),
+(39,'置顶/取消置顶文章','admin','article','is_top','','置顶/取消置顶文章。',2,1,36,1516953162,1516953162,'',0,0),
+(40,'删除文章','admin','article','delete','','删除文章。',2,1,36,1516953183,1516953183,'',0,0),
+(41,'附件','admin','attachment','index','','附件管理。',1,2,31,1516953306,1516953306,'fa-cube',0,0),
+(42,'附件审核','admin','attachment','audit','','附件审核。',2,1,41,1516953359,1516953440,'',0,0),
+(43,'附件上传','admin','attachment','upload','','附件上传。',2,1,41,1516953392,1516953392,'',0,0),
+(44,'附件下载','admin','attachment','download','','附件下载。',2,1,41,1516953430,1516953430,'',0,0),
+(45,'附件删除','admin','attachment','delete','','附件删除。',2,1,41,1516953477,1516953477,'',0,0),
+(46,'留言','admin','tomessages','index','','留言管理。',1,2,31,1516953526,1516953526,'fa-comments',0,0),
+(47,'留言处理','admin','tomessages','mark','','留言处理。',2,1,46,1516953605,1516953605,'',0,0),
+(48,'留言删除','admin','tomessages','delete','','留言删除。',2,1,46,1516953648,1516953648,'',0,0),
+(49,'图片上传','admin','common','upload','','图片上传。',2,2,0,1516954491,1516954491,'',0,0),
+(50,'管理员登录','admin','common','login','','管理员登录。',2,2,0,1516954517,1516954517,'',0,0),
+(52,'产品','','','','','产品管理',1,2,31,1519886048,1519886209,'fa-gg-circle',0,0),
+(53,'分类','admin','productcate','index','','产品分类管理',1,2,52,1519886175,1519886223,' fa-btc ',0,0);
+
+/*Table structure for table `mjlayui_article` */
+
+DROP TABLE IF EXISTS `mjlayui_article`;
+
+CREATE TABLE `mjlayui_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `tag` varchar(255) DEFAULT NULL,
@@ -196,15 +218,13 @@ CREATE TABLE `tplay_article` (
   KEY `create_time` (`create_time`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_article
--- ----------------------------
+/*Data for the table `mjlayui_article` */
 
--- ----------------------------
--- Table structure for `tplay_article_cate`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_article_cate`;
-CREATE TABLE `tplay_article_cate` (
+/*Table structure for table `mjlayui_article_cate` */
+
+DROP TABLE IF EXISTS `mjlayui_article_cate`;
+
+CREATE TABLE `mjlayui_article_cate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `tag` varchar(250) DEFAULT NULL COMMENT '关键词',
@@ -216,15 +236,13 @@ CREATE TABLE `tplay_article_cate` (
   KEY `id` (`id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_article_cate
--- ----------------------------
+/*Data for the table `mjlayui_article_cate` */
 
--- ----------------------------
--- Table structure for `tplay_attachment`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_attachment`;
-CREATE TABLE `tplay_attachment` (
+/*Table structure for table `mjlayui_attachment` */
+
+DROP TABLE IF EXISTS `mjlayui_attachment`;
+
+CREATE TABLE `mjlayui_attachment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `module` char(15) NOT NULL DEFAULT '' COMMENT '所属模块',
   `filename` char(50) NOT NULL DEFAULT '' COMMENT '文件名',
@@ -244,18 +262,21 @@ CREATE TABLE `tplay_attachment` (
   KEY `status` (`status`) USING BTREE,
   KEY `filename` (`filename`) USING BTREE,
   KEY `create_time` (`create_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='附件表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='附件表';
 
--- ----------------------------
--- Records of tplay_attachment
--- ----------------------------
-INSERT INTO `tplay_attachment` VALUES ('1', 'admin', '79811855a6c06de53047471c4ff82a36.jpg', '\\uploads\\admin\\admin_thumb\\20180104\\79811855a6c06de53047471c4ff82a36.jpg', '13781', 'jpg', '1', '127.0.0.1', '1', '1515046060', '1', '1515046060', 'admin_thumb', '0');
+/*Data for the table `mjlayui_attachment` */
 
--- ----------------------------
--- Table structure for `tplay_emailconfig`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_emailconfig`;
-CREATE TABLE `tplay_emailconfig` (
+insert  into `mjlayui_attachment`(`id`,`module`,`filename`,`filepath`,`filesize`,`fileext`,`user_id`,`uploadip`,`status`,`create_time`,`admin_id`,`audit_time`,`use`,`download`) values 
+(1,'admin','79811855a6c06de53047471c4ff82a36.jpg','\\uploads\\admin\\admin_thumb\\20180104\\79811855a6c06de53047471c4ff82a36.jpg',13781,'jpg',1,'127.0.0.1',1,1515046060,1,1515046060,'admin_thumb',0),
+(2,'admin','dde8896d1e16b2139d925321e2384f14.png','\\uploads\\admin\\admin_thumb\\20180301\\dde8896d1e16b2139d925321e2384f14.png',20761,'png',1,'0.0.0.0',1,1519885443,1,1519885443,'admin_thumb',0),
+(3,'admin','7cd2c1a2b6b39b861381e914b3e18c24.png','\\uploads\\admin\\admin_thumb\\20180301\\7cd2c1a2b6b39b861381e914b3e18c24.png',22709,'png',1,'0.0.0.0',1,1519892217,1,1519892217,'admin_thumb',0),
+(4,'admin','b2c71eed387f4a0674ddf44fc01b3435.png','\\uploads\\admin\\admin_thumb\\20180301\\b2c71eed387f4a0674ddf44fc01b3435.png',20761,'png',1,'0.0.0.0',1,1519892233,1,1519892233,'admin_thumb',0);
+
+/*Table structure for table `mjlayui_emailconfig` */
+
+DROP TABLE IF EXISTS `mjlayui_emailconfig`;
+
+CREATE TABLE `mjlayui_emailconfig` (
   `email` varchar(5) NOT NULL COMMENT '邮箱配置标识',
   `from_email` varchar(50) NOT NULL COMMENT '邮件来源也就是邮件地址',
   `from_name` varchar(50) NOT NULL,
@@ -267,16 +288,16 @@ CREATE TABLE `tplay_emailconfig` (
   KEY `email` (`email`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_emailconfig
--- ----------------------------
-INSERT INTO `tplay_emailconfig` VALUES ('email', '', '', '', '', '', '', '');
+/*Data for the table `mjlayui_emailconfig` */
 
--- ----------------------------
--- Table structure for `tplay_messages`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_messages`;
-CREATE TABLE `tplay_messages` (
+insert  into `mjlayui_emailconfig`(`email`,`from_email`,`from_name`,`smtp`,`username`,`password`,`title`,`content`) values 
+('email','','','','','','','');
+
+/*Table structure for table `mjlayui_messages` */
+
+DROP TABLE IF EXISTS `mjlayui_messages`;
+
+CREATE TABLE `mjlayui_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `create_time` int(11) NOT NULL,
   `ip` varchar(50) NOT NULL,
@@ -289,15 +310,13 @@ CREATE TABLE `tplay_messages` (
   KEY `create_time` (`create_time`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_messages
--- ----------------------------
+/*Data for the table `mjlayui_messages` */
 
--- ----------------------------
--- Table structure for `tplay_smsconfig`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_smsconfig`;
-CREATE TABLE `tplay_smsconfig` (
+/*Table structure for table `mjlayui_smsconfig` */
+
+DROP TABLE IF EXISTS `mjlayui_smsconfig`;
+
+CREATE TABLE `mjlayui_smsconfig` (
   `sms` varchar(10) NOT NULL DEFAULT 'sms' COMMENT '标识',
   `appkey` varchar(200) NOT NULL,
   `secretkey` varchar(200) NOT NULL,
@@ -308,16 +327,16 @@ CREATE TABLE `tplay_smsconfig` (
   KEY `sms` (`sms`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_smsconfig
--- ----------------------------
-INSERT INTO `tplay_smsconfig` VALUES ('sms', '', '', '', '', '', '');
+/*Data for the table `mjlayui_smsconfig` */
 
--- ----------------------------
--- Table structure for `tplay_urlconfig`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_urlconfig`;
-CREATE TABLE `tplay_urlconfig` (
+insert  into `mjlayui_smsconfig`(`sms`,`appkey`,`secretkey`,`type`,`name`,`code`,`content`) values 
+('sms','','','','','','');
+
+/*Table structure for table `mjlayui_urlconfig` */
+
+DROP TABLE IF EXISTS `mjlayui_urlconfig`;
+
+CREATE TABLE `mjlayui_urlconfig` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `aliases` varchar(200) NOT NULL COMMENT '想要设置的别名',
   `url` varchar(200) NOT NULL COMMENT '原url结构',
@@ -330,16 +349,16 @@ CREATE TABLE `tplay_urlconfig` (
   KEY `status` (`status`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_urlconfig
--- ----------------------------
-INSERT INTO `tplay_urlconfig` VALUES ('1', 'admin_login', 'admin/common/login', '后台登录地址。', '0', '1517621629', '1517621629');
+/*Data for the table `mjlayui_urlconfig` */
 
--- ----------------------------
--- Table structure for `tplay_webconfig`
--- ----------------------------
-DROP TABLE IF EXISTS `tplay_webconfig`;
-CREATE TABLE `tplay_webconfig` (
+insert  into `mjlayui_urlconfig`(`id`,`aliases`,`url`,`desc`,`status`,`create_time`,`update_time`) values 
+(1,'admin_login','admin/common/login','后台登录地址。',0,1517621629,1517621629);
+
+/*Table structure for table `mjlayui_webconfig` */
+
+DROP TABLE IF EXISTS `mjlayui_webconfig`;
+
+CREATE TABLE `mjlayui_webconfig` (
   `web` varchar(20) NOT NULL COMMENT '网站配置标识',
   `name` varchar(200) NOT NULL COMMENT '网站名称',
   `keywords` text COMMENT '关键词',
@@ -353,7 +372,12 @@ CREATE TABLE `tplay_webconfig` (
   KEY `web` (`web`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of tplay_webconfig
--- ----------------------------
-INSERT INTO `tplay_webconfig` VALUES ('web', 'Tplay后台管理框架', 'Tplay,后台管理,thinkphp5,layui', 'Tplay是一款基于ThinkPHP5.0.12 + layui2.2.45 + ECharts + Mysql开发的后台管理框架，集成了一般应用所必须的基础性功能，为开发者节省大量的时间。', '1', 'jpg,png,gif,mp4,zip,jpeg', '500', '', '', null);
+/*Data for the table `mjlayui_webconfig` */
+
+insert  into `mjlayui_webconfig`(`web`,`name`,`keywords`,`desc`,`is_log`,`file_type`,`file_size`,`statistics`,`black_ip`,`url_suffix`) values 
+('web','Tplay后台管理框架','Tplay,后台管理,thinkphp5,layui','Tplay是一款基于ThinkPHP5.0.12 + layui2.2.45 + ECharts + Mysql开发的后台管理框架，集成了一般应用所必须的基础性功能，为开发者节省大量的时间。',1,'jpg,png,gif,mp4,zip,jpeg',500,'','',NULL);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

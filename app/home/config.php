@@ -1,14 +1,20 @@
 <?php
 // +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK IT ]
+// | Tplay [ WE ONLY DO WHAT IS NECESSARY ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006-2016 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2017 http://tplay.pengyichen.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: yunwuxin <448901948@qq.com>
+// | Author: 听雨 < 389625819@qq.com >
 // +----------------------------------------------------------------------
 
+
+//配置文件
 return [
-    'connector' => 'Sync'
+	'view_replace_str' => [
+		'__CSS__'      => '/static/admin/css',
+		'__PUBLIC__'   => '/static/public',
+		'__JS__'       => '/static/admin/js'
+	],
 ];
